@@ -195,7 +195,7 @@
   
   <style>
   :root {
-    --sidebar-width: 200px;
+    --sidebar-width: 220px;
     --sidebar-collapsed-width: 70px;
     --transition-duration: 0.3s;
     --primary-color: #ff9800;
