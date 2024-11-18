@@ -94,12 +94,12 @@
           <div class="charts-grid">
             <div class="chart-card">
               <h2>Budget</h2>
-              <budget-chart :data="budgetData"/>
+              <BudgetChart :data="budgetData"/>
             </div>
   
             <div class="chart-card">
               <h2>Estimates & Invoices Overview</h2>
-              <estimates-chart :data="budgetData"/>
+              <EstimatesChart  :data="budgetData" />
             </div>
           </div>
         </div>
@@ -428,8 +428,9 @@
   .stat-card {
     background-color: var(--bg-primary);
     border-radius: var(--border-radius);
-    padding: var(--spacing-lg);
+    padding: var(--spacing-sm);
     box-shadow: var(--shadow);
+    
   }
   
   .stat-content {
