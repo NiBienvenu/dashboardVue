@@ -3,11 +3,15 @@
      <!-- Sidebar -->
       <aside class="sidebar">
         <div class="logo-container">
-          <div class="logo"></div>
+        <div class="brand">
+          <img src="/logo.png" alt="SmartHr Logo" class="brand-logo" />
+          <h1 class="brand-name">SmartHr</h1>
+        </div>
+          <!-- <div class="logo"></div>
           <span v-show="!isSidebarCollapsed" class="company-name">SmartHr</span>
           <button class="toggle-btn" @click="toggleSidebar">
             <MenuIcon class="icon" />
-          </button>
+          </button> -->
         </div>
   
         <div class="nav-container">
@@ -191,7 +195,7 @@
   
   <style>
   :root {
-    --sidebar-width: 260px;
+    --sidebar-width: 200px;
     --sidebar-collapsed-width: 70px;
     --transition-duration: 0.3s;
     --primary-color: #ff9800;
@@ -208,6 +212,7 @@
     --spacing-xl: 2rem;
   }
   
+  /* Reset & Base Styles */
   * {
     margin: 0;
     padding: 0;
@@ -243,25 +248,31 @@
   
   /* Logo Container */
   .logo-container {
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm);
     border-bottom: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     position: relative;
-    min-height: 70px;
+    min-height: 64px;
   }
   
-  .logo {
-    min-width: 32px;
+  /* Brand */
+  .brand {
+    display: flex;
+    align-items: center;
+    margin-left: var(--spacing-md);
+  }
+  
+  .brand-logo {
+    width: 32px;
     height: 32px;
-    background-color: var(--primary-color);
-    border-radius: var(--spacing-sm);
+    border-radius: var(--border-radius);
   }
   
-  .company-name {
-    margin-left: var(--spacing-sm);
+  .brand-name {
+    margin-left: var(--spacing-md);
+    font-size: 1.25rem;
     font-weight: 600;
-    white-space: nowrap;
   }
   
   /* Navigation */
@@ -387,7 +398,7 @@
   }
   
   .content-wrapper {
-    padding: var(--spacing-xl);
+    padding: var(--spacing-md);
     width: 100%;
   }
   

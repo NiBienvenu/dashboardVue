@@ -6,10 +6,7 @@
         <button class="nav-toggle" @click="toggleSidebar">
           <MenuIcon class="icon" />
         </button>
-        <div class="brand">
-          <img src="/logo.png" alt="SmartHr Logo" class="brand-logo" />
-          <h1 class="brand-name">SmartHr</h1>
-        </div>
+       
       </div>
   
       <!-- Center Section -->
@@ -263,24 +260,7 @@
     padding: 0 var(--spacing-xl);
   }
   
-  /* Brand */
-  .brand {
-    display: flex;
-    align-items: center;
-    margin-left: var(--spacing-md);
-  }
   
-  .brand-logo {
-    width: 32px;
-    height: 32px;
-    border-radius: var(--border-radius);
-  }
-  
-  .brand-name {
-    margin-left: var(--spacing-md);
-    font-size: 1.25rem;
-    font-weight: 600;
-  }
   
   /* Navigation Toggle */
   .nav-toggle {
