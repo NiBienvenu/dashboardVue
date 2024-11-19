@@ -96,7 +96,7 @@
                   <span>Settings</span>
                 </a>
                 <div class="divider"></div>
-                <a href="#" class="menu-item">
+                <a  class="menu-item" @click="handleLogout">
                   <LogOutIcon class="icon" />
                   <span>Log Out</span>
                 </a>
@@ -123,9 +123,13 @@
   import AlertCircleIcon from '../icons/AlertCircleIcon.vue'
   import CheckCircleIcon from '../icons/CheckCircleIcon.vue'
 
-  
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
   
   const emit = defineEmits(['toggle-sidebar'])
+
+  const store = useStore()
+const router = useRouter()
   
   // State
   const searchQuery = ref('')
@@ -223,6 +227,12 @@
   onUnmounted(() => {
     document.removeEventListener('click', handleClickOutside)
   })
+
+  const handleLogout = () => {
+    store.dispatch('logout')
+    router.push('/login')
+   
+}
   </script>
   
   <style scoped>
