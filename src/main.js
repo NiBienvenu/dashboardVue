@@ -9,6 +9,7 @@ import ConfirmationService from 'primevue/confirmationservice';
 import ToastService from 'primevue/toastservice';
 import { i18n } from './i18n'
 import "@/assets/style.css"
+import "@/assets/layouts-style.css"
 
 
 const app = createApp(App)

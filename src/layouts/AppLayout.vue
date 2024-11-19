@@ -1,24 +1,25 @@
 <template>
-    <div>
-        <app-header/>
-        <router-view></router-view>
-        <app-side-bar/>
+    <div class="dashboard" :class="{ 'sidebar-collapsed': isSidebarCollapsed }">
+      <AppSideBar :isSidebarCollapsed="isSidebarCollapsed" />
+      <AppHeader @toggle-sidebar="toggleSidebar" />
+      <AppMain />
     </div>
-</template>
-
-<script>
-import AppHeader from './AppHeader.vue'
-import AppSideBar from './AppSideBar.vue'
-export default {
-  components: { AppHeader, AppSideBar },
-    setup () {
-        
-
-        return {}
-    }
-}
-</script>
-
-<style lang="scss" scoped>
-
-</style>
+  </template>
+  
+  <script setup>
+  import { ref } from 'vue'
+  import AppHeader from './AppHeader.vue'
+  import AppMain from './AppMain.vue'
+  import AppSideBar from './AppSideBar.vue';
+  
+  const isSidebarCollapsed = ref(false)
+  
+  const toggleSidebar = () => {
+    isSidebarCollapsed.value = !isSidebarCollapsed.value
+  }
+  </script>
+  
+  <style setup>
+  
+    
+  </style>

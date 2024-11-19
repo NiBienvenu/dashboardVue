@@ -7,9 +7,18 @@ const api = axios.create({
 });
 export default createStore({
   state: {
-    user: JSON.parse(localStorage.getItem('user') ) || null,
-    token: localStorage.getItem('token') || null
-  },
+  user: (() => {
+    const user = localStorage.getItem('user');
+    try {
+      return user ? JSON.parse(user) : null;
+    } catch (e) {
+      console.error("Error parsing 'user' from localStorage:", e);
+      return null;
+    }
+  })(),
+  token: localStorage.getItem('token') || null
+}
+,
   mutations: {
     SET_USER(state, user) {
       state.user = user
