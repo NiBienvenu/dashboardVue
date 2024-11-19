@@ -1,19 +1,13 @@
 <!-- components/EstimatesChart.vue -->
 <template>
     <div class="chart-container">
-      <apexchart
-        type="line"
-        height="300"
-        :options="chartOptions"
-        :series="series"
-      ></apexchart>
+     
     </div>
   </template>
   
   <script setup>
   import { computed } from 'vue'
-  import VueApexCharts from 'vue3-apexcharts'
-  
+ 
   const props = defineProps({
     data: {
       type: Array,
