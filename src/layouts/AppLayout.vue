@@ -16,7 +16,9 @@
   
   const toggleSidebar = () => {
     isSidebarCollapsed.value = !isSidebarCollapsed.value
-  }
+  };
+  
+
   </script>
   
   <style setup>

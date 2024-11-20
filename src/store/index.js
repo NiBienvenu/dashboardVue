@@ -15,10 +15,10 @@ export default createStore({
       console.error("Error parsing 'user' from localStorage:", e);
       return null;
     }
-  })(),
-  token: localStorage.getItem('token') || null
-}
-,
+    })(),
+    token: localStorage.getItem('token') || null
+  }
+  ,
   mutations: {
     SET_USER(state, user) {
       state.user = user
