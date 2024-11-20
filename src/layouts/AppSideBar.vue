@@ -25,11 +25,10 @@
               >
                 <component :is="item.icon" class="menu-icon" />
                 <span v-show="!isSidebarCollapsed" class="link-text">{{ item.label }}</span>
-                <ChevronDownIcon 
-                  v-if="item.hasSubmenu && !isSidebarCollapsed"
-                  class="submenu-arrow"
-                  :class="{ 'is-rotated': item.isOpen }"
-                />
+                <i class="pi pi-chevron-down submenu-arrow" 
+                v-if="item.hasSubmenu && !isSidebarCollapsed" 
+                style="font-size: 0.75rem " :class="{ 'is-rotated': item.isOpen }"></i>
+                             
               </a>
               <div 
                 v-if="item.hasSubmenu"
@@ -58,7 +57,6 @@
   
   <script setup>
   import { ref } from 'vue'
-  import ChevronDownIcon from '../icons/ChevronDownIcon.vue'
   import DashboardIcon from '../icons/DashboardIcon.vue'
   import AppIcon from '../icons/AppIcon.vue'
   import UserIcon from '../icons/UserIcon.vue'

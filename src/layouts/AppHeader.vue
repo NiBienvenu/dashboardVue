@@ -3,16 +3,16 @@
     <header class="app-header">
       <!-- Left Section -->
       <div class="header-left">
-        <button class="nav-toggle" @click="toggleSidebar">
-          <MenuIcon class="icon" />
+        <button class="nav-toggle" @click="toggleSidebar">          
+          <i class="pi pi-align-right icon" style="font-size: 1.25rem"></i>
         </button>
        
       </div>
   
       <!-- Center Section -->
-      <div class="header-center">
+      <!-- <div class="header-center">
         <div class="search-bar">
-          <SearchIcon class="search-icon" />
+          <i class="pi pi-search search-icon"></i>
           <input 
             type="search" 
             placeholder="Search..." 
@@ -24,13 +24,13 @@
             <div class="search-section">
               <h3>Recent Searches</h3>
               <div v-for="(item, index) in recentSearches" :key="index" class="search-item">
-                <ClockIcon class="item-icon" />
-                <span>{{ item }}</span>
+                <i class="pi pi-history" style="color: var(--text-primary)"></i>
+                <span style="color: var(--text-primary); margin-right: 10px;">{{ item }}</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
   
       <!-- Right Section -->
       <div class="header-right">
@@ -42,7 +42,7 @@
               @click="toggleNotifications"
               :class="{ 'has-badge': unreadNotifications > 0 }"
             >
-              <BellIcon class="icon" />
+              <i class="pi pi-bell icon" style="font-size: 1.5rem"></i>
               <span v-if="unreadNotifications" class="badge">{{ unreadNotifications }}</span>
             </button>
             <div v-show="isNotificationsOpen" class="dropdown notifications-dropdown">
@@ -57,7 +57,9 @@
                      :class="{ 'unread': !notification.read }"
                 >
                   <div class="notification-icon" :class="notification.type">
-                    <component :is="getNotificationIcon(notification.type)" />
+                    <i :class="getNotificationIcon(notification.type)"></i>
+
+                    
                   </div>
                   <div class="notification-content">
                     <p class="notification-text">{{ notification.message }}</p>
@@ -76,7 +78,8 @@
             <button class="profile-button" @click="toggleProfile">
               <img src="/avatar.png" alt="User avatar" class="avatar" />
               <span class="user-name">Mushe Abdul-Hakim</span>
-              <ChevronDownIcon class="icon" :class="{ 'rotated': isProfileOpen }" />
+              <i class="pi pi-chevron-down icon"  style="font-size: 1rem ; color:#fff" :class="{ 'rotated': isProfileOpen }"></i>
+              
             </button>
             <div v-show="isProfileOpen" class="dropdown profile-dropdown">
               <div class="profile-header">
@@ -87,17 +90,17 @@
                 </div>
               </div>
               <div class="dropdown-menu">
-                <a href="#" class="menu-item">
-                  <UserIcon class="icon" />
+                <a href="#" class="menu-item">                 
+                  <i class="pi pi-user icon"></i>
                   <span>My Profile</span>
                 </a>
                 <a href="#" class="menu-item">
-                  <SettingsIcon class="icon" />
+                  <i class="pi pi-cog icon"></i>
                   <span>Settings</span>
                 </a>
                 <div class="divider"></div>
                 <a  class="menu-item" @click="handleLogout">
-                  <LogOutIcon class="icon" />
+                  <i class="pi pi-sign-out icon"></i>
                   <span>Log Out</span>
                 </a>
               </div>
@@ -109,27 +112,16 @@
   </template>
   
   <script setup>
-  import { ref, onMounted, onUnmounted } from 'vue'
-  
-  import ChevronDownIcon from '../icons/ChevronDownIcon.vue'
-  import InfoIcon from '../icons/InfoIcon.vue'
-  import SearchIcon from '../icons/SearchIcon.vue'
-  import MenuIcon from '../icons/MenuIcon.vue'
-  import BellIcon from '../icons/BellIcon.vue'
-  import ClockIcon from '../icons/ClockIcon.vue'
-  import UserIcon from '../icons/UserIcon.vue'
-  import SettingsIcon from '../icons/SettingsIcon.vue'
-  import LogOutIcon from '../icons/LogOutIcon.vue'
-  import AlertCircleIcon from '../icons/AlertCircleIcon.vue'
-  import CheckCircleIcon from '../icons/CheckCircleIcon.vue'
+  import { ref, onMounted, onUnmounted } from 'vue'  
+    
 
-import { useStore } from 'vuex'
-import { useRouter } from 'vue-router'
+  import { useStore } from 'vuex'
+  import { useRouter } from 'vue-router'
   
   const emit = defineEmits(['toggle-sidebar'])
 
   const store = useStore()
-const router = useRouter()
+  const router = useRouter()
   
   // State
   const searchQuery = ref('')
@@ -200,14 +192,16 @@ const router = useRouter()
     unreadNotifications.value = 0
   }
   
+
   const getNotificationIcon = (type) => {
     const icons = {
-      success: CheckCircleIcon,
-      warning: AlertCircleIcon,
-      info: InfoIcon
+      success: 'pi pi-check-circle',
+      warning: 'pi pi-exclamation-circle',
+      info: 'pi pi-info-circle'
     }
-    return icons[type] || InfoIcon
+    return icons[type] || 'pi pi-info-circle'; 
   }
+
   
   // Click outside handler
   const handleClickOutside = (event) => {
@@ -427,6 +421,7 @@ const router = useRouter()
   }
   
   .dropdown-header h3 {
+    color: var(--text-secondary);
     font-size: 1rem;
     font-weight: 600;
   }
@@ -489,6 +484,7 @@ const router = useRouter()
   }
   
   .notification-text {
+    color: var(--text-primary);
     margin-bottom: var(--spacing-sm);
     font-size: 0.875rem;
   }
@@ -504,14 +500,12 @@ const router = useRouter()
     align-items: center;
     gap: var(--spacing-sm);
     border: none;
-  cursor: pointer;
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: var(--border-radius);
-}
+    cursor: pointer;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius);
+  }
 
-.profile-button:hover {
-  background-color: var(--bg-secondary);
-}
+
 
 .avatar {
   width: 32px;
@@ -557,6 +551,7 @@ const router = useRouter()
 }
 
 .profile-info h4 {
+  color: var(--text-primary);
   font-size: 0.875rem;
   font-weight: 600;
   margin-bottom: 4px;
@@ -584,6 +579,7 @@ const router = useRouter()
 
 .menu-item:hover {
   background-color: var(--bg-secondary);
+  cursor: pointer;
 }
 
 .menu-item .icon {
